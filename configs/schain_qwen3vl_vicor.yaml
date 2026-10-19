@@ -1,0 +1,80 @@
+model_name: qwen3_vl
+model_ckpt: ${BASE_MODEL_PATH}
+dataset_name: s-chain
+data_root: ${DATA_ROOT}/S-Chain
+out_dir: ${OUTPUT_ROOT}/schain_qwen3vl_vicor
+data:
+  jsonl_name: schain_train_10k.jsonl
+  use_cot: true
+  strict_image_paths: true
+  skip_image_exists_scan: false
+  vision_min_pixels: 50176
+  vision_max_pixels: 262144
+  force_mean_image: false
+  image_open_timeout_sec: 0.2
+  image_roots:
+  - ${DATA_ROOT}/S-Chain
+  training_pool_size: 10000
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+  bias: none
+vicor:
+  seed: 17
+  top_ratio: 0.2
+  score_mode: delta_log1p_rho_nov
+  rho_clip:
+  - 0.05
+  - 20.0
+  eps: 1.0e-08
+  E_delta_floor: 2.5e-05
+  selection:
+    ratio: 0.2
+    strategy: paper_vicor_mmr
+    score_col: score_delta_log1p_rho_nov
+    mmr_lambda: 0.85
+    mmr_candidate_ratio: 3.0
+    tail_reserve_ratio: 0.0
+    balance_col: ''
+    max_group_share: 1.0
+    min_group_samples: 0
+    label_align_alpha: 0.45
+    directness_alpha: 0.2
+    cardinality_alpha: 0.18
+    target_cardinality: 2.0
+    eta: 1.0
+    target_label_vocab:
+    - non-dementia
+    - mild-dementia
+    - moderate-dementia
+    target_label_aliases:
+      non-dementia:
+      - non dementia
+      mild-dementia:
+      - mild-demetia
+      - mild dementia
+      moderate-dementia:
+      - moderate-dementia
+      - moderate demetia
+      - moderate dementia
+    strict_balance_col: false
+    beta_a: 0.7
+    beta_d: 0.85
+train:
+  epochs: 3
+  lr: 0.0001
+  warmup_ratio: 0.03
+  lr_full_baseline: 0.0001
+  weight_decay: 0.05
+  batch_size: 1
+  grad_accum: 16
+  bf16: true

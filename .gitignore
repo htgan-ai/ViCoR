@@ -1,0 +1,25 @@
+# Python and OS
+__pycache__/
+*.py[cod]
+.DS_Store
+.pytest_cache/
+.mypy_cache/
+.venv/
+
+# Local data, models, and generated artifacts
+outputs/
+checkpoints/
+logs/
+*.ckpt
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.parquet
+
+# Local paths and credentials
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
