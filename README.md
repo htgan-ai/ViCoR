@@ -1,6 +1,6 @@
 # Estimating Visual Necessity via Counterfactual Residuals for Multimodal Medical Data Selection 
 
-## NeurIPS 2026
+## NeurIPS 2026 [Arxiv](https://arxiv.org/abs/2610.25202)
 
 *Haotian Gan, Yudong Li, Xintian Li, Jiarui Han, Weidong Tang*
 
@@ -65,11 +65,14 @@ bash examples/run_qwen3vl_evaluation.sh      # full benchmark evaluation of a ch
 ## Citation
 
 ```bibtex
-@inproceedings{gan2026vicor,
-  title={ViCoR: Estimating Visual Necessity via Counterfactual Residuals for Multimodal Medical Data Selection},
-  author={Gan, Haotian and Li, Yudong and Li, Xintian and Han, Jiarui and Tang, Weidong},
-  booktitle={Advances in Neural Information Processing Systems},
-  year={2026}
+@misc{gan2026vicorestimatingvisualnecessity,
+      title={ViCoR: Estimating Visual Necessity via Counterfactual Residuals for Multimodal Medical Data Selection}, 
+      author={Haotian Gan and Yudong Li and Xintian Li and Jiarui Han and Weidong Tang},
+      year={2026},
+      eprint={2610.25202},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2610.25202}, 
 }
 ```
 
