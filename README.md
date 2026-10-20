@@ -76,3 +76,6 @@ bash examples/run_qwen3vl_evaluation.sh      # full benchmark evaluation of a ch
 }
 ```
 
+## License
+
+This project is released under the [Apache License 2.0](LICENSE).
